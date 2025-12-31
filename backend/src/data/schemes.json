@@ -1,0 +1,605 @@
+[
+    {
+        "id": "pm-kisan",
+        "name": "PM-KISAN Samman Nidhi",
+        "category": "agriculture",
+        "ministry": "Ministry of Agriculture & Farmers Welfare",
+        "website": "https://pmkisan.gov.in",
+        "benefitAmount": 6000,
+        "benefitFrequency": "yearly",
+        "benefitDescription": "₹6,000 per year in 3 installments",
+        "isActive": true,
+        "launchYear": 2019,
+        "eligibility": {
+            "occupation": [
+                "farmer"
+            ],
+            "hasLand": true,
+            "maxIncome": null,
+            "minAge": 18,
+            "maxAge": null,
+            "gender": null,
+            "bpl": null
+        },
+        "documents": [
+            "Aadhaar Card",
+            "Land Records (Khatauni)",
+            "Bank Account Passbook"
+        ],
+        "translations": {
+            "en": {
+                "name": "PM-KISAN Samman Nidhi",
+                "shortDescription": "Direct income support for farmer families",
+                "description": "Under this scheme, eligible farmer families receive ₹6,000 per year as income support, paid in three equal installments of ₹2,000 each directly into their bank accounts.",
+                "eligibilityText": "Small and marginal farmer families with cultivable land holding",
+                "howToApply": "1. Visit your nearest Common Service Centre (CSC)\n2. Or apply online at pmkisan.gov.in\n3. Submit required documents\n4. Verification by local revenue officer\n5. Benefits credited to bank account",
+                "helplineNumber": "155261"
+            },
+            "hi": {
+                "name": "पीएम-किसान सम्मान निधि",
+                "shortDescription": "किसान परिवारों को सीधी आय सहायता",
+                "description": "इस योजना के तहत, पात्र किसान परिवारों को प्रति वर्ष ₹6,000 की आय सहायता मिलती है, जो ₹2,000 की तीन समान किस्तों में सीधे उनके बैंक खातों में जमा की जाती है।",
+                "eligibilityText": "खेती योग्य भूमि वाले छोटे और सीमांत किसान परिवार",
+                "howToApply": "1. अपने नजदीकी जन सेवा केंद्र (CSC) पर जाएं\n2. या pmkisan.gov.in पर ऑनलाइन आवेदन करें\n3. आवश्यक दस्तावेज जमा करें\n4. स्थानीय राजस्व अधिकारी द्वारा सत्यापन\n5. लाभ बैंक खाते में जमा",
+                "helplineNumber": "155261"
+            }
+        }
+    },
+    {
+        "id": "ayushman-bharat",
+        "name": "Ayushman Bharat PM-JAY",
+        "category": "healthcare",
+        "ministry": "Ministry of Health & Family Welfare",
+        "website": "https://pmjay.gov.in",
+        "benefitAmount": 500000,
+        "benefitFrequency": "yearly",
+        "benefitDescription": "₹5 lakh health insurance per family per year",
+        "isActive": true,
+        "launchYear": 2018,
+        "eligibility": {
+            "occupation": null,
+            "hasLand": null,
+            "maxIncome": 300000,
+            "minAge": null,
+            "maxAge": null,
+            "gender": null,
+            "bpl": true
+        },
+        "documents": [
+            "Aadhaar Card",
+            "Ration Card",
+            "Any Government ID"
+        ],
+        "translations": {
+            "en": {
+                "name": "Ayushman Bharat PM-JAY",
+                "shortDescription": "₹5 lakh free health insurance for poor families",
+                "description": "Ayushman Bharat Pradhan Mantri Jan Arogya Yojana provides health coverage of ₹5 lakh per family per year for secondary and tertiary care hospitalization to over 10 crore poor and vulnerable families.",
+                "eligibilityText": "Families identified based on SECC 2011 data, BPL card holders, and deprived rural/urban households",
+                "howToApply": "1. Check eligibility at mera.pmjay.gov.in\n2. Visit any empanelled hospital\n3. Show Aadhaar or any ID at Ayushman Mitra desk\n4. Get Ayushman Card made (free)\n5. Avail cashless treatment",
+                "helplineNumber": "14555"
+            },
+            "hi": {
+                "name": "आयुष्मान भारत पीएम-जय",
+                "shortDescription": "गरीब परिवारों के लिए ₹5 लाख का मुफ्त स्वास्थ्य बीमा",
+                "description": "आयुष्मान भारत प्रधानमंत्री जन आरोग्य योजना 10 करोड़ से अधिक गरीब और कमजोर परिवारों को माध्यमिक और तृतीयक देखभाल अस्पताल में भर्ती के लिए प्रति परिवार प्रति वर्ष ₹5 लाख का स्वास्थ्य कवरेज प्रदान करती है।",
+                "eligibilityText": "SECC 2011 डेटा के आधार पर पहचाने गए परिवार, BPL कार्ड धारक, और वंचित ग्रामीण/शहरी परिवार",
+                "howToApply": "1. mera.pmjay.gov.in पर पात्रता जांचें\n2. किसी भी पंजीकृत अस्पताल में जाएं\n3. आयुष्मान मित्र डेस्क पर आधार या कोई ID दिखाएं\n4. आयुष्मान कार्ड बनवाएं (मुफ्त)\n5. कैशलेस इलाज पाएं",
+                "helplineNumber": "14555"
+            }
+        }
+    },
+    {
+        "id": "pm-awas-yojana",
+        "name": "PM Awas Yojana (Gramin)",
+        "category": "housing",
+        "ministry": "Ministry of Rural Development",
+        "website": "https://pmayg.nic.in",
+        "benefitAmount": 120000,
+        "benefitFrequency": "one-time",
+        "benefitDescription": "₹1.2 lakh (plains) / ₹1.3 lakh (hilly) for house construction",
+        "isActive": true,
+        "launchYear": 2016,
+        "eligibility": {
+            "occupation": null,
+            "hasLand": null,
+            "maxIncome": 300000,
+            "minAge": 18,
+            "maxAge": null,
+            "gender": null,
+            "bpl": true
+        },
+        "documents": [
+            "Aadhaar Card",
+            "BPL Certificate",
+            "Land Documents",
+            "Bank Account"
+        ],
+        "translations": {
+            "en": {
+                "name": "PM Awas Yojana (Gramin)",
+                "shortDescription": "Financial assistance for building pucca houses",
+                "description": "PM Awas Yojana - Gramin provides financial assistance of ₹1.20 lakh in plain areas and ₹1.30 lakh in hilly/difficult areas for construction of pucca houses to homeless and those living in kutcha houses.",
+                "eligibilityText": "Homeless families or those living in houses with kutcha roof and kutcha wall, selected from SECC 2011 data",
+                "howToApply": "1. Apply through Gram Panchayat\n2. Verification by Block Development Officer\n3. Selection based on SECC data\n4. Geo-tagging of construction stages\n5. Amount released in installments",
+                "helplineNumber": "1800-11-6446"
+            },
+            "hi": {
+                "name": "पीएम आवास योजना (ग्रामीण)",
+                "shortDescription": "पक्के मकान बनाने के लिए वित्तीय सहायता",
+                "description": "पीएम आवास योजना - ग्रामीण मैदानी क्षेत्रों में ₹1.20 लाख और पहाड़ी/कठिन क्षेत्रों में ₹1.30 लाख की वित्तीय सहायता प्रदान करती है।",
+                "eligibilityText": "बेघर परिवार या कच्चे घरों में रहने वाले, SECC 2011 डेटा से चयनित",
+                "howToApply": "1. ग्राम पंचायत के माध्यम से आवेदन करें\n2. खंड विकास अधिकारी द्वारा सत्यापन\n3. SECC डेटा के आधार पर चयन\n4. निर्माण चरणों की जियो-टैगिंग\n5. किस्तों में राशि जारी",
+                "helplineNumber": "1800-11-6446"
+            }
+        }
+    },
+    {
+        "id": "pm-fasal-bima",
+        "name": "PM Fasal Bima Yojana",
+        "category": "agriculture",
+        "ministry": "Ministry of Agriculture & Farmers Welfare",
+        "website": "https://pmfby.gov.in",
+        "benefitAmount": null,
+        "benefitFrequency": "seasonal",
+        "benefitDescription": "Crop insurance with minimal premium (1.5-5%)",
+        "isActive": true,
+        "launchYear": 2016,
+        "eligibility": {
+            "occupation": [
+                "farmer"
+            ],
+            "hasLand": true,
+            "maxIncome": null,
+            "minAge": 18,
+            "maxAge": null,
+            "gender": null,
+            "bpl": null
+        },
+        "documents": [
+            "Aadhaar Card",
+            "Land Records",
+            "Bank Account",
+            "Sowing Certificate"
+        ],
+        "translations": {
+            "en": {
+                "name": "PM Fasal Bima Yojana",
+                "shortDescription": "Crop insurance at affordable premiums",
+                "benefitDescription": "Crop insurance with minimal premium (1.5-5%)",
+                "description": "Provides comprehensive crop insurance coverage against crop loss due to natural calamities, pests, and diseases. Farmers pay only 1.5% for Rabi, 2% for Kharif, and 5% for commercial crops.",
+                "eligibilityText": "All farmers including sharecroppers and tenant farmers growing notified crops",
+                "howToApply": "1. Visit bank, CSC, or insurance company\n2. Fill application before sowing deadline\n3. Pay minimal premium share\n4. In case of crop loss, report within 72 hours\n5. Claim settled based on crop cutting experiments",
+                "helplineNumber": "1800-180-1551"
+            },
+            "hi": {
+                "name": "पीएम फसल बीमा योजना",
+                "shortDescription": "किफायती प्रीमियम पर फसल बीमा",
+                "benefitDescription": "न्यूनतम प्रीमियम (1.5-5%) के साथ फसल बीमा",
+                "description": "प्राकृतिक आपदाओं, कीटों और बीमारियों के कारण फसल नुकसान के खिलाफ व्यापक फसल बीमा कवरेज प्रदान करता है।",
+                "eligibilityText": "बटाईदार और किरायेदार किसानों सहित सभी किसान जो अधिसूचित फसलें उगाते हैं",
+                "howToApply": "1. बैंक, CSC या बीमा कंपनी में जाएं\n2. बुवाई की समय सीमा से पहले आवेदन भरें\n3. न्यूनतम प्रीमियम हिस्सा भुगतान करें\n4. फसल नुकसान होने पर 72 घंटे के भीतर रिपोर्ट करें\n5. फसल कटाई प्रयोगों के आधार पर दावा निपटान",
+                "helplineNumber": "1800-180-1551"
+            }
+        }
+    },
+    {
+        "id": "sukanya-samriddhi",
+        "name": "Sukanya Samriddhi Yojana",
+        "category": "women-child",
+        "ministry": "Ministry of Finance",
+        "website": "https://www.nsiindia.gov.in",
+        "benefitAmount": null,
+        "benefitFrequency": "maturity",
+        "benefitDescription": "8.2% interest rate savings scheme for girl child",
+        "isActive": true,
+        "launchYear": 2015,
+        "eligibility": {
+            "occupation": null,
+            "hasLand": null,
+            "maxIncome": null,
+            "minAge": 0,
+            "maxAge": 10,
+            "gender": "female",
+            "bpl": null
+        },
+        "documents": [
+            "Girl Child Birth Certificate",
+            "Parent/Guardian Aadhaar",
+            "Address Proof"
+        ],
+        "translations": {
+            "en": {
+                "name": "Sukanya Samriddhi Yojana",
+                "shortDescription": "Savings scheme for girl child education and marriage",
+                "benefitDescription": "8.2% interest rate savings scheme for girl child",
+                "description": "A government-backed savings scheme for parents of girl children with high interest rate (8.2%) and tax benefits. Account can be opened for girls below 10 years, matures at 21.",
+                "eligibilityText": "Parents or guardians of girl children below 10 years of age, maximum 2 accounts per family",
+                "howToApply": "1. Visit any post office or authorized bank\n2. Fill account opening form\n3. Submit girl child's birth certificate\n4. Minimum deposit ₹250, maximum ₹1.5 lakh/year\n5. Deposit for 15 years, matures in 21 years",
+                "helplineNumber": "1800-266-6868"
+            },
+            "hi": {
+                "name": "सुकन्या समृद्धि योजना",
+                "shortDescription": "बेटी की शिक्षा और विवाह के लिए बचत योजना",
+                "benefitDescription": "बालिका के लिए 8.2% ब्याज दर वाली बचत योजना",
+                "description": "लड़कियों के माता-पिता के लिए उच्च ब्याज दर (8.2%) और कर लाभ के साथ सरकार समर्थित बचत योजना। 10 वर्ष से कम उम्र की लड़कियों के लिए खाता खोला जा सकता है, 21 वर्ष में परिपक्व होता है।",
+                "eligibilityText": "10 वर्ष से कम उम्र की लड़कियों के माता-पिता या अभिभावक, प्रति परिवार अधिकतम 2 खाते",
+                "howToApply": "1. किसी भी डाकघर या अधिकृत बैंक में जाएं\n2. खाता खोलने का फॉर्म भरें\n3. लड़की का जन्म प्रमाण पत्र जमा करें\n4. न्यूनतम जमा ₹250, अधिकतम ₹1.5 लाख/वर्ष\n5. 15 वर्ष तक जमा करें, 21 वर्ष में परिपक्व",
+                "helplineNumber": "1800-266-6868"
+            }
+        }
+    },
+    {
+        "id": "ujjwala-yojana",
+        "name": "PM Ujjwala Yojana",
+        "category": "social-security",
+        "ministry": "Ministry of Petroleum & Natural Gas",
+        "website": "https://pmuy.gov.in",
+        "benefitAmount": 1600,
+        "benefitFrequency": "one-time",
+        "benefitDescription": "Free LPG connection with first refill and stove",
+        "isActive": true,
+        "launchYear": 2016,
+        "eligibility": {
+            "occupation": null,
+            "hasLand": null,
+            "maxIncome": 200000,
+            "minAge": 18,
+            "maxAge": null,
+            "gender": "female",
+            "bpl": true
+        },
+        "documents": [
+            "Aadhaar Card",
+            "BPL Card/Ration Card",
+            "Passport Photo",
+            "Bank Account"
+        ],
+        "translations": {
+            "en": {
+                "name": "PM Ujjwala Yojana",
+                "shortDescription": "Free LPG connection for BPL women",
+                "description": "Provides free LPG connection to women from BPL households, including a deposit-free connection, first refill, and gas stove. Aims to replace unclean cooking fuels with clean LPG.",
+                "eligibilityText": "Adult women from BPL households who don't have existing LPG connection",
+                "howToApply": "1. Visit nearest LPG distributor\n2. Fill Ujjwala application form\n3. Submit Aadhaar and BPL documents\n4. Get connection installed at home\n5. First refill and stove provided free",
+                "helplineNumber": "1800-266-6696"
+            },
+            "hi": {
+                "name": "पीएम उज्ज्वला योजना",
+                "shortDescription": "BPL महिलाओं को मुफ्त एलपीजी कनेक्शन",
+                "description": "BPL परिवारों की महिलाओं को मुफ्त एलपीजी कनेक्शन प्रदान करता है, जिसमें जमा-मुक्त कनेक्शन, पहला रिफिल और गैस स्टोव शामिल है।",
+                "eligibilityText": "BPL परिवारों की वयस्क महिलाएं जिनके पास मौजूदा एलपीजी कनेक्शन नहीं है",
+                "howToApply": "1. निकटतम एलपीजी वितरक पर जाएं\n2. उज्ज्वला आवेदन पत्र भरें\n3. आधार और BPL दस्तावेज जमा करें\n4. घर पर कनेक्शन स्थापित करवाएं\n5. पहला रिफिल और स्टोव मुफ्त",
+                "helplineNumber": "1800-266-6696"
+            }
+        }
+    },
+    {
+        "id": "mudra-yojana",
+        "name": "PM MUDRA Yojana",
+        "category": "financial",
+        "ministry": "Ministry of Finance",
+        "website": "https://www.mudra.org.in",
+        "benefitAmount": 1000000,
+        "benefitFrequency": "one-time",
+        "benefitDescription": "Loans up to ₹10 lakh for small businesses",
+        "isActive": true,
+        "launchYear": 2015,
+        "eligibility": {
+            "occupation": [
+                "self-employed",
+                "small-business",
+                "entrepreneur"
+            ],
+            "hasLand": null,
+            "maxIncome": null,
+            "minAge": 18,
+            "maxAge": null,
+            "gender": null,
+            "bpl": null
+        },
+        "documents": [
+            "Aadhaar Card",
+            "PAN Card",
+            "Business Plan",
+            "Bank Statements",
+            "Address Proof"
+        ],
+        "translations": {
+            "en": {
+                "name": "PM MUDRA Yojana",
+                "shortDescription": "Collateral-free loans for small businesses",
+                "description": "Provides loans up to ₹10 lakh to non-corporate, non-farm small/micro enterprises. Three categories: Shishu (up to ₹50,000), Kishore (₹50,000-5 lakh), Tarun (₹5-10 lakh).",
+                "eligibilityText": "Any Indian citizen with a business plan for non-farm income generating activity",
+                "howToApply": "1. Visit any bank, MFI, or NBFC\n2. Submit business plan and documents\n3. Get loan sanctioned (no collateral needed)\n4. Loan disbursed to business account\n5. MUDRA card provided for working capital",
+                "helplineNumber": "1800-180-1111"
+            },
+            "hi": {
+                "name": "पीएम मुद्रा योजना",
+                "shortDescription": "छोटे व्यवसायों के लिए बिना गारंटी के ऋण",
+                "description": "गैर-कॉर्पोरेट, गैर-कृषि लघु/सूक्ष्म उद्यमों को ₹10 लाख तक ऋण प्रदान करता है। तीन श्रेणियां: शिशु (₹50,000 तक), किशोर (₹50,000-5 लाख), तरुण (₹5-10 लाख)।",
+                "eligibilityText": "गैर-कृषि आय सृजन गतिविधि के लिए व्यवसाय योजना वाला कोई भी भारतीय नागरिक",
+                "howToApply": "1. किसी भी बैंक, MFI या NBFC में जाएं\n2. व्यवसाय योजना और दस्तावेज जमा करें\n3. ऋण स्वीकृत करवाएं (कोई गारंटी नहीं)\n4. व्यवसाय खाते में ऋण वितरित\n5. कार्यशील पूंजी के लिए मुद्रा कार्ड",
+                "helplineNumber": "1800-180-1111"
+            }
+        }
+    },
+    {
+        "id": "jan-dhan",
+        "name": "PM Jan Dhan Yojana",
+        "category": "financial",
+        "ministry": "Ministry of Finance",
+        "website": "https://pmjdy.gov.in",
+        "benefitAmount": 10000,
+        "benefitFrequency": "one-time",
+        "benefitDescription": "Zero-balance bank account with ₹10,000 overdraft",
+        "isActive": true,
+        "launchYear": 2014,
+        "eligibility": {
+            "occupation": null,
+            "hasLand": null,
+            "maxIncome": null,
+            "minAge": 10,
+            "maxAge": null,
+            "gender": null,
+            "bpl": null
+        },
+        "documents": [
+            "Aadhaar Card",
+            "Passport Photo"
+        ],
+        "translations": {
+            "en": {
+                "name": "PM Jan Dhan Yojana",
+                "shortDescription": "Zero-balance bank account for all",
+                "description": "Financial inclusion scheme providing zero-balance savings account with RuPay debit card, ₹2 lakh accident insurance, ₹30,000 life cover, and ₹10,000 overdraft facility after 6 months.",
+                "eligibilityText": "Any Indian citizen aged 10 years or above without existing bank account",
+                "howToApply": "1. Visit any bank branch or BC point\n2. Fill simplified account opening form\n3. Submit Aadhaar and photo\n4. Get RuPay card and passbook instantly\n5. Insurance coverage automatic",
+                "helplineNumber": "1800-11-0001"
+            },
+            "hi": {
+                "name": "पीएम जन धन योजना",
+                "shortDescription": "सभी के लिए जीरो-बैलेंस बैंक खाता",
+                "description": "वित्तीय समावेशन योजना जो रुपे डेबिट कार्ड, ₹2 लाख दुर्घटना बीमा, ₹30,000 जीवन कवर और 6 महीने बाद ₹10,000 ओवरड्राफ्ट के साथ जीरो-बैलेंस बचत खाता प्रदान करती है।",
+                "eligibilityText": "10 वर्ष या उससे अधिक उम्र का कोई भी भारतीय नागरिक जिसके पास मौजूदा बैंक खाता नहीं है",
+                "howToApply": "1. किसी भी बैंक शाखा या BC पॉइंट पर जाएं\n2. सरलीकृत खाता खोलने का फॉर्म भरें\n3. आधार और फोटो जमा करें\n4. तुरंत रुपे कार्ड और पासबुक प्राप्त करें\n5. बीमा कवरेज स्वचालित",
+                "helplineNumber": "1800-11-0001"
+            }
+        }
+    },
+    {
+        "id": "scholarship-sc",
+        "name": "Post Matric Scholarship for SC",
+        "category": "education",
+        "ministry": "Ministry of Social Justice & Empowerment",
+        "website": "https://scholarships.gov.in",
+        "benefitAmount": 25000,
+        "benefitFrequency": "yearly",
+        "benefitDescription": "Full tuition fee + maintenance allowance",
+        "isActive": true,
+        "launchYear": 1944,
+        "eligibility": {
+            "occupation": null,
+            "hasLand": null,
+            "maxIncome": 250000,
+            "minAge": null,
+            "maxAge": null,
+            "gender": null,
+            "bpl": null,
+            "category": "SC"
+        },
+        "documents": [
+            "Caste Certificate",
+            "Income Certificate",
+            "Previous Marksheet",
+            "Aadhaar",
+            "Bank Account"
+        ],
+        "translations": {
+            "en": {
+                "name": "Post Matric Scholarship for SC Students",
+                "shortDescription": "Full scholarship for SC students after 10th",
+                "description": "Provides financial assistance to Scheduled Caste students studying at post-matriculation level, covering full tuition fees and providing monthly maintenance allowance.",
+                "eligibilityText": "SC students studying in Class 11 and above with family income below ₹2.5 lakh per annum",
+                "howToApply": "1. Register on National Scholarship Portal\n2. Fill application with institution details\n3. Upload caste and income certificates\n4. Institute verification\n5. Amount credited to bank account",
+                "helplineNumber": "0120-6619540"
+            },
+            "hi": {
+                "name": "अनुसूचित जाति छात्रों के लिए पोस्ट मैट्रिक छात्रवृत्ति",
+                "shortDescription": "10वीं के बाद SC छात्रों को पूर्ण छात्रवृत्ति",
+                "description": "पोस्ट-मैट्रिक स्तर पर पढ़ने वाले अनुसूचित जाति के छात्रों को वित्तीय सहायता प्रदान करता है, जिसमें पूर्ण ट्यूशन फीस और मासिक रखरखाव भत्ता शामिल है।",
+                "eligibilityText": "₹2.5 लाख प्रति वर्ष से कम पारिवारिक आय वाले कक्षा 11 और उससे ऊपर पढ़ने वाले SC छात्र",
+                "howToApply": "1. राष्ट्रीय छात्रवृत्ति पोर्टल पर पंजीकरण करें\n2. संस्थान विवरण के साथ आवेदन भरें\n3. जाति और आय प्रमाण पत्र अपलोड करें\n4. संस्थान सत्यापन\n5. बैंक खाते में राशि जमा",
+                "helplineNumber": "0120-6619540"
+            }
+        }
+    },
+    {
+        "id": "widow-pension",
+        "name": "Indira Gandhi National Widow Pension",
+        "category": "social-security",
+        "ministry": "Ministry of Rural Development",
+        "website": "https://nsap.nic.in",
+        "benefitAmount": 300,
+        "benefitFrequency": "monthly",
+        "benefitDescription": "₹300 per month pension for widows",
+        "isActive": true,
+        "launchYear": 2009,
+        "eligibility": {
+            "occupation": null,
+            "hasLand": null,
+            "maxIncome": 200000,
+            "minAge": 40,
+            "maxAge": 79,
+            "gender": "female",
+            "bpl": true,
+            "maritalStatus": "widow"
+        },
+        "documents": [
+            "Death Certificate of Husband",
+            "Age Proof",
+            "BPL Card",
+            "Aadhaar",
+            "Bank Account"
+        ],
+        "translations": {
+            "en": {
+                "name": "Indira Gandhi National Widow Pension",
+                "shortDescription": "Monthly pension for BPL widows",
+                "description": "Provides monthly pension of ₹300 (Central) + State contribution to widows from BPL families aged 40-79 years. Many states provide additional amount.",
+                "eligibilityText": "Widows aged 40-79 years belonging to BPL households",
+                "howToApply": "1. Apply through Gram Panchayat/Block office\n2. Submit death certificate of husband\n3. Age and BPL verification\n4. Selection by Gram Sabha\n5. Pension credited monthly to bank",
+                "helplineNumber": "1800-111-555"
+            },
+            "hi": {
+                "name": "इंदिरा गांधी राष्ट्रीय विधवा पेंशन",
+                "shortDescription": "BPL विधवाओं को मासिक पेंशन",
+                "description": "40-79 वर्ष की BPL परिवारों की विधवाओं को ₹300 (केंद्रीय) + राज्य का योगदान मासिक पेंशन प्रदान करती है। कई राज्य अतिरिक्त राशि प्रदान करते हैं।",
+                "eligibilityText": "BPL परिवारों से संबंधित 40-79 वर्ष की विधवाएं",
+                "howToApply": "1. ग्राम पंचायत/ब्लॉक कार्यालय के माध्यम से आवेदन करें\n2. पति का मृत्यु प्रमाण पत्र जमा करें\n3. उम्र और BPL सत्यापन\n4. ग्राम सभा द्वारा चयन\n5. बैंक में मासिक पेंशन जमा",
+                "helplineNumber": "1800-111-555"
+            }
+        }
+    },
+    {
+        "id": "gaura-devi",
+        "name": "Nanda Gaura Devi Kanya Dhan Yojana",
+        "category": "women-child",
+        "ministry": "Department of Women and Child Development, Uttarakhand",
+        "website": "http://wecd.uk.gov.in",
+        "benefitAmount": 51000,
+        "benefitFrequency": "one-time",
+        "benefitDescription": "₹51,000 for the girl child on passing Class 12",
+        "isActive": true,
+        "launchYear": 2017,
+        "eligibility": {
+            "occupation": null,
+            "hasLand": null,
+            "maxIncome": 72000,
+            "minAge": 17,
+            "maxAge": 25,
+            "gender": "female",
+            "bpl": true
+        },
+        "documents": [
+            "Aadhaar Card",
+            "Class 12 Marksheet",
+            "Income Certificate",
+            "Domicile of Uttarakhand",
+            "BPL Card"
+        ],
+        "translations": {
+            "en": {
+                "name": "Nanda Gaura Devi Kanya Dhan Yojana",
+                "shortDescription": "Financial aid for girl students in Uttarakhand",
+                "description": "This Uttarakhand state scheme provides ₹51,000 to girls from BPL families upon passing Class 12 to encourage higher education and prevent child marriage.",
+                "eligibilityText": "Girls who have passed Class 12 from schools in Uttarakhand and belong to BPL families (income < ₹72,000 pa)",
+                "howToApply": "1. Apply within 6 months of passing Class 12\n2. Submit application to the District Social Welfare Office or online\n3. Verification of documents by local authorities\n4. Amount transferred to girl's bank account",
+                "helplineNumber": "1800-180-4100"
+            },
+            "hi": {
+                "name": "नंदा गौरा देवी कन्या धन योजना",
+                "shortDescription": "उत्तराखंड में छात्राओं के लिए वित्तीय सहायता",
+                "description": "यह उत्तराखंड राज्य योजना BPL परिवारों की लड़कियों को कक्षा 12 उत्तीर्ण करने पर ₹51,000 प्रदान करती है ताकि उच्च शिक्षा को बढ़ावा मिले।",
+                "eligibilityText": "उत्तराखंड के स्कूलों से 12वीं कक्षा उत्तीर्ण करने वाली लड़कियां जो BPL परिवारों से हैं",
+                "howToApply": "1. 12वीं पास करने के 6 महीने के भीतर आवेदन करें\n2. जिला समाज कल्याण कार्यालय या ऑनलाइन आवेदन जमा करें\n3. स्थानीय अधिकारियों द्वारा दस्तावेजों का सत्यापन\n4. राशि लड़की के बैंक खाते में स्थानांतरित",
+                "helplineNumber": "1800-180-4100"
+            }
+        }
+    },
+    {
+        "id": "uk-homestay",
+        "name": "Uttarakhand Homestay Scheme",
+        "category": "financial",
+        "ministry": "Uttarakhand Tourism Development Board",
+        "website": "https://uttarakhandtourism.gov.in",
+        "benefitAmount": null,
+        "benefitFrequency": "one-time",
+        "benefitDescription": "Subsidy up to ₹10 lakh for building/renovating homestays",
+        "isActive": true,
+        "launchYear": 2018,
+        "eligibility": {
+            "occupation": [
+                "self-employed",
+                "entrepreneur"
+            ],
+            "hasLand": true,
+            "maxIncome": null,
+            "minAge": 18,
+            "maxAge": null,
+            "gender": null,
+            "bpl": null
+        },
+        "documents": [
+            "Aadhaar Card",
+            "Land Records (Zameeni Kagaz)",
+            "Bank Passbook",
+            "Awas Praman Patra (Domicile)"
+        ],
+        "translations": {
+            "en": {
+                "name": "Uttarakhand Homestay Scheme",
+                "shortDescription": "Turn your home into a tourist stay in Munsyari",
+                "benefitDescription": "Subsidy up to ₹10 lakh for building/renovating homestays",
+                "description": "Perfect for residents of Munsyari! Get financial assistance and subsidies to convert your home into a homestay for tourists visiting Panchachuli and Khalia Top.",
+                "eligibilityText": "Local residents of Uttarakhand owning an ancestral or own house in a tourist area",
+                "howToApply": "1. Register on the Uttarakhand Tourism portal\n2. Submit house plan and documents\n3. Inspection by Tourism Officer\n4. Loan and subsidy approval from designated banks\n5. Training provided by the tourism department",
+                "helplineNumber": "0135-2559987"
+            },
+            "hi": {
+                "name": "उत्तराखंड होमस्टे योजना",
+                "shortDescription": "मुनस्यारी में अपने घर को टूरिस्ट स्टे में बदलें",
+                "benefitDescription": "होमस्टे बनाने/नवीनीकरण के लिए ₹10 लाख तक की सब्सिडी",
+                "description": "मुनस्यारी के निवासियों के लिए बेहतरीन! पंचचूली और खलिया टॉप आने वाले पर्यटकों के लिए अपने घर को होमस्टे में बदलने के लिए सहायता और सब्सिडी पाएं।",
+                "eligibilityText": "उत्तराखंड के स्थानीय निवासी जिनका पर्यटन क्षेत्र में अपना पुश्तैनी या निजी घर हो",
+                "howToApply": "1. उत्तराखंड पर्यटन पोर्टल पर पंजीकरण करें\n2. घर का नक्शा और दस्तावेज जमा करें\n3. पर्यटन अधिकारी द्वारा निरीक्षण\n4. नामित बैंकों से ऋण और सब्सिडी की मंजूरी\n5. पर्यटन विभाग द्वारा प्रशिक्षण",
+                "helplineNumber": "0135-2559987"
+            }
+        }
+    },
+    {
+        "id": "uk-pension",
+        "name": "Uttarakhand Old Age Pension",
+        "category": "social-security",
+        "ministry": "Social Welfare Department, Uttarakhand",
+        "website": "https://ssp.uk.gov.in",
+        "benefitAmount": 1500,
+        "benefitFrequency": "monthly",
+        "benefitDescription": "₹1,500 per month for elderly citizens",
+        "isActive": true,
+        "launchYear": 2014,
+        "eligibility": {
+            "occupation": null,
+            "hasLand": null,
+            "maxIncome": 48000,
+            "minAge": 60,
+            "maxAge": null,
+            "gender": null,
+            "bpl": true
+        },
+        "documents": [
+            "Age Proof",
+            "Income Certificate",
+            "Aadhaar Card",
+            "Bank Passbook"
+        ],
+        "translations": {
+            "en": {
+                "name": "Uttarakhand Old Age Pension",
+                "shortDescription": "Monthly support for seniors in the hills",
+                "description": "Provides a monthly pension of ₹1,500 to senior citizens of Uttarakhand belonging to BPL families or having limited income.",
+                "eligibilityText": "Residents of Uttarakhand aged 60+ with annual family income less than ₹48,000",
+                "howToApply": "1. Get application form from Gram Panchayat or Block Office\n2. Submit with age and income proof\n3. Verification by Social Welfare Department\n4. Direct credit to bank account every month",
+                "helplineNumber": "0135-2660127"
+            },
+            "hi": {
+                "name": "उत्तराखंड वृद्धावस्था पेंशन",
+                "shortDescription": "पहाड़ों में बुजुर्गों के लिए मासिक सहायता",
+                "description": "यह योजना उत्तराखंड के 60 वर्ष से अधिक आयु के बुजुर्गों को ₹1,500 मासिक पेंशन प्रदान करती है जो BPL श्रेणी में आते हैं।",
+                "eligibilityText": "60+ आयु के उत्तराखंड निवासी जिनकी वार्षिक पारिवारिक आय ₹48,000 से कम हो",
+                "howToApply": "1. ग्राम पंचायत या ब्लॉक कार्यालय से आवेदन पत्र प्राप्त करें\n2. आयु और आय प्रमाण के साथ जमा करें\n3. समाज कल्याण विभाग द्वारा सत्यापन\n4. हर महीने सीधे बैंक खाते में राशि जमा",
+                "helplineNumber": "0135-2660127"
+            }
+        }
+    }
+]

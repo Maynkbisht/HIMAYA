@@ -1,0 +1,29 @@
+{
+  "name": "himaya-backend",
+  "version": "1.0.0",
+  "description": "HIMAYA - Human-centred Inclusive Mobile Assistance for Yojana Access",
+  "main": "backend/src/server.js",
+  "scripts": {
+    "start": "node backend/src/server.js",
+    "dev": "node --watch backend/src/server.js",
+    "test": "node --test backend/src/**/*.test.js"
+  },
+  "keywords": [
+    "e-governance",
+    "voice-assistant",
+    "government-schemes",
+    "india",
+    "accessibility"
+  ],
+  "author": "MEGHA Team",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

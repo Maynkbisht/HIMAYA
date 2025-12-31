@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta
+      name="description"
+      content="HIMAYA (Human-centred Inclusive Mobile Assistance for Yojana Access) helps you find government schemes in Munsyari, Uttarakhand using voice commands in Hindi or English."
+    />
+    <meta
+      name="keywords"
+      content="HIMAYA, Uttarakhand schemes, Munsyari, government schemes, voice assistant, Hindi voice search, offline app"
+    />
+    <meta name="author" content="HIMAYA Team" />
+    <meta name="theme-color" content="#1a365d" />
+
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="HIMAYA" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+
+    <title>HIMAYA - Uttarakhand Government Scheme Assistant</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+
+  <body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+      <div class="container header-content">
+        <div class="logo">
+          <span class="logo-icon">⛰️</span>
+          <div class="logo-text">
+            <h1>HIMAYA</h1>
+            <p class="tagline">Apka Uttarakhandi Sahayak</p>
+          </div>
+        </div>
+        <nav class="nav" role="navigation" aria-label="Main navigation">
+          <button
+            id="language-toggle"
+            class="btn btn-outline"
+            aria-label="Switch language"
+          >
+            <span id="current-lang">EN</span> |
+            <span id="other-lang">हिंदी</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main" role="main">
+      <!-- Hero Section with Voice Interface -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container">
+          <div class="hero-content">
+            <h2 id="hero-title" class="hero-title">
+              <span class="en">Find Government Schemes Using Your Voice</span>
+              <span class="hi">अपनी आवाज़ से सरकारी योजनाएं खोजें</span>
+            </h2>
+            <div class="voice-instruction">
+              <p class="hero-subtitle">
+                <span class="en"
+                  >Say "What schemes are available?" or tap the microphone</span
+                >
+                <span class="hi"
+                  >"क्या योजनाएं उपलब्ध हैं?" कहें या माइक्रोफ़ोन टैप करें</span
+                >
+              </p>
+            </div>
+
+            <!-- Voice Button -->
+            <div class="voice-container">
+              <button
+                id="voice-button"
+                class="voice-button"
+                aria-label="Start voice input"
+              >
+                <span class="voice-icon">🎤</span>
+                <span class="voice-pulse"></span>
+              </button>
+              <div id="voice-status" class="voice-status" aria-live="polite">
+                <span class="en">Tap to speak</span>
+                <span class="hi">बोलने के लिए दबाएं</span>
+              </div>
+            </div>
+
+            <!-- Voice Response Area -->
+            <div
+              id="voice-response"
+              class="voice-response"
+              aria-live="polite"
+              hidden
+            >
+              <div class="response-text"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Animated Background -->
+        <div class="hero-bg">
+          <div class="wave wave-1"></div>
+          <div class="wave wave-2"></div>
+        </div>
+      </section>
+
+      <!-- Quick Actions -->
+      <section class="quick-actions" aria-labelledby="quick-actions-title">
+        <div class="container">
+          <h2 id="quick-actions-title" class="section-title">
+            <span class="en">Quick Actions</span>
+            <span class="hi">त्वरित कार्य</span>
+          </h2>
+          <div class="action-grid">
+            <button
+              class="action-card"
+              data-action="list-schemes"
+              aria-describedby="action-schemes-desc"
+            >
+              <span class="action-icon">📋</span>
+              <span class="action-label">
+                <span class="en">Browse Schemes</span>
+                <span class="hi">योजनाएं देखें</span>
+              </span>
+              <span id="action-schemes-desc" class="sr-only"
+                >View all available government schemes</span
+              >
+            </button>
+            <button
+              class="action-card"
+              data-action="check-eligibility"
+              aria-describedby="action-eligibility-desc"
+            >
+              <span class="action-icon">✅</span>
+              <span class="action-label">
+                <span class="en">Check Eligibility</span>
+                <span class="hi">पात्रता जांचें</span>
+              </span>
+              <span id="action-eligibility-desc" class="sr-only"
+                >Check which schemes you qualify for</span
+              >
+            </button>
+            <button
+              class="action-card"
+              data-action="categories"
+              aria-describedby="action-categories-desc"
+            >
+              <span class="action-icon">📁</span>
+              <span class="action-label">
+                <span class="en">Categories</span>
+                <span class="hi">श्रेणियाँ</span>
+              </span>
+              <span id="action-categories-desc" class="sr-only"
+                >Browse schemes by category</span
+              >
+            </button>
+            <button
+              class="action-card"
+              data-action="help"
+              aria-describedby="action-help-desc"
+            >
+              <span class="action-icon">❓</span>
+              <span class="action-label">
+                <span class="en">Help</span>
+                <span class="hi">मदद</span>
+              </span>
+              <span id="action-help-desc" class="sr-only"
+                >Get help using this application</span
+              >
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Categories Section -->
+      <section
+        id="categories-section"
+        class="categories-section"
+        aria-labelledby="categories-title"
+      >
+        <div class="container">
+          <h2 id="categories-title" class="section-title">
+            <span class="en">Scheme Categories</span>
+            <span class="hi">योजना श्रेणियाँ</span>
+          </h2>
+          <div id="categories-grid" class="categories-grid">
+            <!-- Categories loaded dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Schemes Section -->
+      <section
+        id="schemes-section"
+        class="schemes-section"
+        aria-labelledby="schemes-title"
+      >
+        <div class="container">
+          <div class="section-header">
+            <h2 id="schemes-title" class="section-title">
+              <span class="en">Government Schemes</span>
+              <span class="hi">सरकारी योजनाएं</span>
+            </h2>
+            <div class="search-box">
+              <input
+                type="search"
+                id="scheme-search"
+                class="search-input"
+                placeholder="Search schemes..."
+                aria-label="Search schemes"
+              />
+            </div>
+          </div>
+          <div id="schemes-grid" class="schemes-grid">
+            <!-- Schemes loaded dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Eligibility Modal -->
+      <div
+        id="eligibility-modal"
+        class="modal"
+        role="dialog"
+        aria-labelledby="eligibility-modal-title"
+        aria-modal="true"
+        hidden
+      >
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 id="eligibility-modal-title">
+              <span class="en">Check Your Eligibility</span>
+              <span class="hi">अपनी पात्रता जांचें</span>
+            </h2>
+            <button class="modal-close" aria-label="Close modal">
+              &times;
+            </button>
+          </div>
+          <form id="eligibility-form" class="eligibility-form">
+            <div class="form-group">
+              <label for="user-age">
+                <span class="en">Age</span>
+                <span class="hi">उम्र</span>
+              </label>
+              <input
+                type="number"
+                id="user-age"
+                name="age"
+                min="0"
+                max="120"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="user-income">
+                <span class="en">Annual Income (₹)</span>
+                <span class="hi">वार्षिक आय (₹)</span>
+              </label>
+              <input
+                type="number"
+                id="user-income"
+                name="income"
+                min="0"
+                step="1000"
+              />
+            </div>
+            <div class="form-group">
+              <label for="user-occupation">
+                <span class="en">Occupation</span>
+                <span class="hi">पेशा</span>
+              </label>
+              <select id="user-occupation" name="occupation">
+                <option value="">Select...</option>
+                <option value="farmer">Farmer / किसान</option>
+                <option value="self-employed">
+                  Self Employed / स्व-रोजगार
+                </option>
+                <option value="employed">Employed / नौकरी</option>
+                <option value="student">Student / छात्र</option>
+                <option value="unemployed">Unemployed / बेरोजगार</option>
+                <option value="homemaker">Homemaker / गृहिणी</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="user-gender">
+                <span class="en">Gender</span>
+                <span class="hi">लिंग</span>
+              </label>
+              <select id="user-gender" name="gender">
+                <option value="">Select...</option>
+                <option value="male">Male / पुरुष</option>
+                <option value="female">Female / महिला</option>
+                <option value="other">Other / अन्य</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group checkbox-group">
+                <input type="checkbox" id="user-bpl" name="bpl" />
+                <label for="user-bpl">
+                  <span class="en">BPL Card Holder</span>
+                  <span class="hi">BPL कार्ड धारक</span>
+                </label>
+              </div>
+              <div class="form-group checkbox-group">
+                <input type="checkbox" id="user-land" name="hasLand" />
+                <label for="user-land">
+                  <span class="en">Own Agricultural Land</span>
+                  <span class="hi">कृषि भूमि है</span>
+                </label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-large">
+              <span class="en">Check Eligibility</span>
+              <span class="hi">पात्रता जांचें</span>
+            </button>
+          </form>
+          <div id="eligibility-results" class="eligibility-results" hidden>
+            <!-- Results shown here -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Scheme Detail Modal -->
+      <div
+        id="scheme-modal"
+        class="modal"
+        role="dialog"
+        aria-labelledby="scheme-modal-title"
+        aria-modal="true"
+        hidden
+      >
+        <div class="modal-backdrop"></div>
+        <div class="modal-content modal-large">
+          <div class="modal-header">
+            <h2 id="scheme-modal-title">Scheme Details</h2>
+            <button class="modal-close" aria-label="Close modal">
+              &times;
+            </button>
+          </div>
+          <div id="scheme-detail-content" class="scheme-detail">
+            <!-- Scheme details loaded dynamically -->
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <span class="logo-icon">⛰️</span>
+            <span>HIMAYA</span>
+          </div>
+          <p class="footer-text">
+            <span class="en"
+              >Human-centred Inclusive Mobile Assistance for Yojana Access</span
+            >
+            <span class="hi"
+              >योजना तक पहुँच के लिए मानव-केंद्रित समावेशी मोबाइल सहायता</span
+            >
+          </p>
+          <p class="footer-credits">
+            <span class="en">Making government schemes accessible to all</span>
+            <span class="hi">सभी के लिए सरकारी योजनाओं को सुलभ बनाना</span>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Offline Indicator -->
+    <div id="offline-indicator" class="offline-indicator" hidden>
+      <span class="offline-icon">📡</span>
+      <span class="en">You're offline. Some features may be limited.</span>
+      <span class="hi">आप ऑफलाइन हैं। कुछ सुविधाएं सीमित हो सकती हैं।</span>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+    <!-- Scripts -->
+    <script src="/js/api.js"></script>
+    <script src="/js/voice.js"></script>
+    <script src="/js/offline.js"></script>
+    <script src="/js/app.js"></script>
+  </body>
+</html>
