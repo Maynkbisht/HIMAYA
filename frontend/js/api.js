@@ -30,7 +30,10 @@ async function apiRequest(endpoint, options = {}) {
         return data;
     } catch (error) {
         if (error.name === 'TypeError' && error.message === 'Failed to fetch') {
-            // Network error - try to get from cache if available
+            // Signal offline manager
+            if (window.offlineManager) {
+                window.offlineManager.handleOffline();
+            }
             throw new Error('Network error. You may be offline.');
         }
         throw error;

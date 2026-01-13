@@ -4,9 +4,11 @@
 
 class HimayaApp {
     constructor() {
-        this.currentLanguage = localStorage.getItem('himaya_language') || 'en';
+        this.currentLanguage = window.i18n.currentLanguage;
         this.categories = [];
+        this.schemes = []; // Initialize schemes array
         this.currentSchemeId = null;
+        this.lastSynced = null;
 
         this.init();
     }
@@ -18,13 +20,42 @@ class HimayaApp {
         // Set up event listeners
         this.setupEventListeners();
 
+        // Initialize reusable components
+        this.initTheme();
+
         // Load initial data
         await this.loadData();
+    }
 
-        // Check for stored language preference
-        const storedLang = localStorage.getItem('himaya_language');
-        if (storedLang) {
-            this.setLanguage(storedLang);
+    /**
+     * Initialize theme (Dark/Light)
+     */
+    initTheme() {
+        const savedTheme = localStorage.getItem('himaya_theme') || 'dark';
+        document.body.setAttribute('data-theme', savedTheme);
+        this.updateThemeIcon(savedTheme);
+    }
+
+    toggleTheme() {
+        const currentTheme = document.body.getAttribute('data-theme') || 'dark';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('himaya_theme', newTheme);
+        this.updateThemeIcon(newTheme);
+    }
+
+    updateThemeIcon(theme) {
+        const toggleBtn = document.getElementById('theme-toggle');
+        if (toggleBtn) {
+            const sun = toggleBtn.querySelector('.icon-sun');
+            const moon = toggleBtn.querySelector('.icon-moon');
+            if (theme === 'dark') {
+                sun.hidden = false;
+                moon.hidden = true;
+            } else {
+                sun.hidden = true;
+                moon.hidden = false;
+            }
         }
     }
 
@@ -32,11 +63,23 @@ class HimayaApp {
      * Set up event listeners
      */
     setupEventListeners() {
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => this.toggleTheme());
+        }
+
         // Language toggle
         const langToggle = document.getElementById('language-toggle');
         if (langToggle) {
             langToggle.addEventListener('click', () => this.toggleLanguage());
         }
+
+        // Listen for language changes from other components
+        window.addEventListener('languageChanged', (e) => {
+            this.currentLanguage = e.detail.language;
+            this.updateUIForLanguage();
+        });
 
         // Quick action buttons
         document.querySelectorAll('.action-card').forEach(card => {
@@ -67,7 +110,11 @@ class HimayaApp {
         // Modal close buttons
         document.querySelectorAll('.modal-close, .modal-backdrop').forEach(el => {
             el.addEventListener('click', (e) => {
-                if (e.target === el) {
+                // If it's a backdrop, only close if clicking the backdrop itself
+                if (el.classList.contains('modal-backdrop')) {
+                    if (e.target === el) this.closeModals();
+                } else {
+                    // For buttons, close regardless of clicking the icon or the button
                     this.closeModals();
                 }
             });
@@ -91,6 +138,16 @@ class HimayaApp {
                 this.loadData();
             }
         });
+        
+        // Manual refresh for Last Consumed
+        const lastSyncedEl = document.getElementById('last-synced');
+        if (lastSyncedEl) {
+             lastSyncedEl.style.cursor = 'pointer';
+             lastSyncedEl.addEventListener('click', () => {
+                 this.loadData();
+                 window.showToast(window.i18n.get('app.loading'), 'info');
+             });
+        }
     }
 
     /**
@@ -103,6 +160,8 @@ class HimayaApp {
 
             // Load schemes
             await this.loadSchemes();
+
+            this.updateLastSynced();
         } catch (error) {
             console.error('Error loading data:', error);
 
@@ -121,6 +180,14 @@ class HimayaApp {
                     this.renderCategories();
                 }
             }
+        }
+    }
+    
+    updateLastSynced() {
+        this.lastSynced = new Date();
+        const el = document.getElementById('last-synced');
+        if (el) {
+            el.textContent = `Last synced: ${this.lastSynced.toLocaleTimeString()}`;
         }
     }
 
@@ -177,11 +244,10 @@ class HimayaApp {
       <button class="category-card" data-category="${cat.id}" aria-label="${cat.name}">
         <span class="category-icon">${cat.icon}</span>
         <span class="category-name">
-          <span class="en" ${this.currentLanguage !== 'en' ? 'hidden' : ''}>${cat.name}</span>
-          <span class="hi" ${this.currentLanguage !== 'hi' ? 'hidden' : ''}>${cat.nameHi}</span>
+          ${this.currentLanguage === 'hi' ? cat.nameHi : cat.name}
         </span>
         <span class="category-count">
-          ${this.currentLanguage === 'hi' ? `${cat.schemeCount} योजनाएं` : `${cat.schemeCount} schemes`}
+          ${cat.schemeCount} ${window.i18n.get('categories.schemeCount')}
         </span>
       </button>
     `).join('');
@@ -205,8 +271,7 @@ class HimayaApp {
         if (this.schemes.length === 0) {
             grid.innerHTML = `
         <div class="no-results">
-          <p class="en" ${this.currentLanguage !== 'en' ? 'hidden' : ''}>No schemes found</p>
-          <p class="hi" ${this.currentLanguage !== 'hi' ? 'hidden' : ''}>कोई योजना नहीं मिली</p>
+          <p>${window.i18n.get('schemes.noResults')}</p>
         </div>
       `;
             return;
@@ -294,31 +359,27 @@ class HimayaApp {
      * Show scheme details in modal
      */
     async showSchemeDetail(schemeId) {
-        console.log('Showing scheme details for:', schemeId);
         this.currentSchemeId = schemeId;
         const modal = document.getElementById('scheme-modal');
         const content = document.getElementById('scheme-detail-content');
         const modalTitle = document.getElementById('scheme-modal-title');
 
-        if (!modal || !content) {
-            console.error('Modal or content element not found');
-            return;
-        }
+        if (!modal || !content) return;
+
+        this.closeModals();
 
         // Show modal immediately with loading state
-        content.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
-        if (modalTitle) modalTitle.textContent = this.currentLanguage === 'hi' ? 'लोड हो रहा है...' : 'Loading...';
+        content.innerHTML = `<div class="loading-state"><div class="spinner"></div></div>`;
+        const loadingTitle = window.i18n.get('common.loading');
+        if (modalTitle) modalTitle.textContent = loadingTitle || 'Loading...';
         modal.hidden = false;
 
         try {
-            console.log(`Fetching scheme details for ${schemeId} in ${this.currentLanguage}`);
             const response = await HIMAYA_API.getSchemeById(schemeId, this.currentLanguage);
 
             if (response && response.success) {
                 const scheme = response.data;
-                console.log('Scheme data received:', scheme);
-
-                // Safe data extraction with defaults
+                
                 const name = scheme.name || 'Scheme Detail';
                 const ministry = scheme.ministry || '';
                 const benefitAmount = scheme.benefitAmount;
@@ -343,45 +404,32 @@ class HimayaApp {
           </div>
           
           <div class="scheme-detail-section">
-            <h3>
-              <span class="en" ${this.currentLanguage !== 'en' ? 'hidden' : ''}>Description</span>
-              <span class="hi" ${this.currentLanguage !== 'hi' ? 'hidden' : ''}>विवरण</span>
-            </h3>
+            <h3>${window.i18n.get('detail.description')}</h3>
             <p>${description}</p>
           </div>
           
           <div class="scheme-detail-section">
-            <h3>
-              <span class="en" ${this.currentLanguage !== 'en' ? 'hidden' : ''}>Eligibility</span>
-              <span class="hi" ${this.currentLanguage !== 'hi' ? 'hidden' : ''}>पात्रता</span>
-            </h3>
+            <h3>${window.i18n.get('detail.eligibility')}</h3>
             <p>${eligibilityText}</p>
           </div>
           
           <div class="scheme-detail-section">
-            <h3>
-              <span class="en" ${this.currentLanguage !== 'en' ? 'hidden' : ''}>How to Apply</span>
-              <span class="hi" ${this.currentLanguage !== 'hi' ? 'hidden' : ''}>आवेदन कैसे करें</span>
-            </h3>
+            <h3>${window.i18n.get('detail.howToApply')}</h3>
             <p>${howToApply.replace(/\n/g, '<br>')}</p>
           </div>
           
           <div class="scheme-detail-section">
-            <h3>
-              <span class="en" ${this.currentLanguage !== 'en' ? 'hidden' : ''}>Documents Required</span>
-              <span class="hi" ${this.currentLanguage !== 'hi' ? 'hidden' : ''}>आवश्यक दस्तावेज</span>
-            </h3>
+            <h3>${window.i18n.get('detail.documents')}</h3>
             <ul>
               ${documents.length > 0
                         ? documents.map(doc => `<li>${doc}</li>`).join('')
-                        : `<li>${this.currentLanguage === 'hi' ? 'कोई विशिष्ट दस्तावेज सूचीबद्ध नहीं हैं' : 'No specific documents listed'}</li>`}
+                        : `<li>${window.i18n.get('detail.noDocuments')}</li>`}
             </ul>
           </div>
           
           <div class="scheme-detail-actions">
             <a href="${website}" target="_blank" rel="noopener" class="btn btn-primary">
-              <span class="en" ${this.currentLanguage !== 'en' ? 'hidden' : ''}>Visit Official Website</span>
-              <span class="hi" ${this.currentLanguage !== 'hi' ? 'hidden' : ''}>आधिकारिक वेबसाइट</span>
+              ${window.i18n.get('detail.visitWebsite')}
             </a>
             <a href="tel:${helpline}" class="btn btn-outline">
               <span>📞 ${helpline}</span>
@@ -389,10 +437,8 @@ class HimayaApp {
           </div>
         `;
 
-                // Update modal title
                 if (modalTitle) modalTitle.textContent = name;
 
-                // Focus the modal content for accessibility
                 const modalContent = modal.querySelector('.modal-content');
                 if (modalContent) {
                     modalContent.setAttribute('tabindex', '-1');
@@ -405,12 +451,12 @@ class HimayaApp {
             console.error('Error loading scheme details:', error);
             content.innerHTML = `
               <div style="text-align: center; padding: 2rem;">
-                <p style="color: #ef4444; font-size: 1.25rem;">❌ ${this.currentLanguage === 'hi' ? 'त्रुटि' : 'Error'}</p>
-                <p style="color: #94a3b8; margin: 1rem 0;">${error.message || 'Please check your connection and try again.'}</p>
-                <button class="btn btn-outline" onclick="window.munsyariApp.closeModals()">${this.currentLanguage === 'hi' ? 'बंद करें' : 'Close'}</button>
+                <p style="color: var(--color-error); font-size: 1.25rem;">❌ ${window.i18n.get('errors.generic')}</p>
+                <p style="color: var(--color-text-secondary); margin: 1rem 0;">${error.message || window.i18n.get('errors.network')}</p>
+                <button class="btn btn-outline" onclick="window.himayaApp.closeModals()">${window.i18n.get('app.close')}</button>
               </div>
             `;
-            if (modalTitle) modalTitle.textContent = this.currentLanguage === 'hi' ? 'त्रुटि' : 'Error';
+            if (modalTitle) modalTitle.textContent = window.i18n.get('errors.generic');
         }
     }
 
@@ -441,6 +487,7 @@ class HimayaApp {
      * Show eligibility modal
      */
     showEligibilityModal() {
+        this.closeModals();
         const modal = document.getElementById('eligibility-modal');
         if (modal) {
             modal.hidden = false;
@@ -474,7 +521,7 @@ class HimayaApp {
             }
         } catch (error) {
             console.error('Error checking eligibility:', error);
-            this.showToast('Error checking eligibility', 'error');
+            this.showToast(window.i18n.get('errors.checkEligibility'), 'error');
         }
     }
 
@@ -488,19 +535,16 @@ class HimayaApp {
         if (schemes.length === 0) {
             resultsDiv.innerHTML = `
         <p class="results-title" style="color: var(--color-warning);">
-          <span class="en">No matching schemes found</span>
-          <span class="hi">कोई मिलती-जुलती योजना नहीं मिली</span>
+          ${window.i18n.get('eligibility.noMatch')}
         </p>
         <p>
-          <span class="en">Try adjusting your profile or browse all schemes.</span>
-          <span class="hi">अपनी प्रोफाइल बदलें या सभी योजनाएं देखें।</span>
+          ${window.i18n.get('eligibility.tryAgain')}
         </p>
       `;
         } else {
             resultsDiv.innerHTML = `
         <p class="results-title">
-          <span class="en">You're eligible for ${schemes.length} scheme${schemes.length > 1 ? 's' : ''}!</span>
-          <span class="hi">आप ${schemes.length} योजना${schemes.length > 1 ? 'ओं' : ''} के लिए पात्र हैं!</span>
+          ${window.i18n.get('eligibility.matchFound', { count: schemes.length, plural: schemes.length > 1 ? 's' : '' })}
         </p>
         <div class="results-list">
           ${schemes.map(scheme => `
@@ -535,10 +579,7 @@ class HimayaApp {
      * Show help
      */
     showHelp() {
-        const helpText = this.currentLanguage === 'hi'
-            ? 'आप योजनाएं खोजने के लिए माइक्रोफोन बटन का उपयोग कर सकते हैं। "योजनाएं" या "पात्रता जांचें" बोलें।'
-            : 'You can use the microphone button to find schemes. Say "schemes" or "check my eligibility".';
-
+        const helpText = window.i18n.get('help.voiceInstruction');
         this.showToast(helpText, 'info');
 
         // Also speak it
@@ -563,35 +604,20 @@ class HimayaApp {
      */
     toggleLanguage() {
         const newLang = this.currentLanguage === 'en' ? 'hi' : 'en';
-        this.setLanguage(newLang);
+        window.i18n.setLanguage(newLang);
     }
-
+    
     /**
-     * Set language
+     * Update UI when language changes
      */
-    async setLanguage(lang) {
-        this.currentLanguage = lang;
-        document.body.dataset.lang = lang;
-
-        // Update toggle button
-        const currentLangEl = document.getElementById('current-lang');
-        const otherLangEl = document.getElementById('other-lang');
-        if (currentLangEl && otherLangEl) {
-            currentLangEl.textContent = lang === 'en' ? 'EN' : 'हिंदी';
-            otherLangEl.textContent = lang === 'en' ? 'हिंदी' : 'EN';
-        }
-
+    async updateUIForLanguage() {
         // Update voice interface
         if (window.voiceInterface) {
-            window.voiceInterface.setLanguage(lang);
+            window.voiceInterface.setLanguage(this.currentLanguage);
         }
-
-        // Store preference
-        localStorage.setItem('himaya_language', lang);
-
-        // Reload data in new language
+        
         await this.loadData();
-
+        
         // Refresh open modal if any
         const schemeModal = document.getElementById('scheme-modal');
         if (schemeModal && !schemeModal.hidden && this.currentSchemeId) {

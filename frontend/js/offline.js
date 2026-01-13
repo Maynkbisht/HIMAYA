@@ -23,8 +23,10 @@ class OfflineManager {
         window.addEventListener('online', () => this.handleOnline());
         window.addEventListener('offline', () => this.handleOffline());
 
-        // Don't show offline indicator on initial load
-        // navigator.onLine can be unreliable - let API calls determine connectivity
+        // Check initial state
+        if (!this.isOnline) {
+            this.showOfflineIndicator();
+        }
 
         // Load cached data
         this.loadCachedData();

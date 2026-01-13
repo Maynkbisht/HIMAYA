@@ -25,10 +25,9 @@
       content="black-translucent"
     />
     <meta name="apple-mobile-web-app-title" content="HIMAYA" />
-    <meta name="mobile-web-app-capable" content="yes" />
     <link rel="apple-touch-icon" href="/icons/icon-192.png" />
 
-    <title>HIMAYA - Uttarakhand Government Scheme Assistant</title>
+    <title data-i18n="app.title">HIMAYA - Uttarakhand Government Scheme Assistant</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -53,10 +52,18 @@
           <span class="logo-icon">⛰️</span>
           <div class="logo-text">
             <h1>HIMAYA</h1>
-            <p class="tagline">Apka Uttarakhandi Sahayak</p>
+            <p class="tagline" data-i18n="app.tagline">Apka Uttarakhandi Sahayak</p>
           </div>
         </div>
         <nav class="nav" role="navigation" aria-label="Main navigation">
+          
+          <!-- Mode Toggle -->
+          <button id="theme-toggle" class="btn btn-icon" aria-label="Toggle Dark Mode">
+            <span class="icon-sun">☀️</span>
+            <span class="icon-moon" hidden>🌙</span>
+          </button>
+
+          <!-- Language Toggle -->
           <button
             id="language-toggle"
             class="btn btn-outline"
@@ -75,18 +82,12 @@
       <section class="hero" aria-labelledby="hero-title">
         <div class="container">
           <div class="hero-content">
-            <h2 id="hero-title" class="hero-title">
-              <span class="en">Find Government Schemes Using Your Voice</span>
-              <span class="hi">अपनी आवाज़ से सरकारी योजनाएं खोजें</span>
+            <h2 id="hero-title" class="hero-title" data-i18n="hero.title">
+              Find Government Schemes Using Your Voice
             </h2>
             <div class="voice-instruction">
-              <p class="hero-subtitle">
-                <span class="en"
-                  >Say "What schemes are available?" or tap the microphone</span
-                >
-                <span class="hi"
-                  >"क्या योजनाएं उपलब्ध हैं?" कहें या माइक्रोफ़ोन टैप करें</span
-                >
+              <p class="hero-subtitle" data-i18n="hero.subtitle">
+                Say "What schemes are available?" or tap the microphone
               </p>
             </div>
 
@@ -100,9 +101,8 @@
                 <span class="voice-icon">🎤</span>
                 <span class="voice-pulse"></span>
               </button>
-              <div id="voice-status" class="voice-status" aria-live="polite">
-                <span class="en">Tap to speak</span>
-                <span class="hi">बोलने के लिए दबाएं</span>
+              <div id="voice-status" class="voice-status" aria-live="polite" data-i18n="hero.tapToSpeak">
+                Tap to speak
               </div>
             </div>
 
@@ -128,10 +128,10 @@
       <!-- Quick Actions -->
       <section class="quick-actions" aria-labelledby="quick-actions-title">
         <div class="container">
-          <h2 id="quick-actions-title" class="section-title">
-            <span class="en">Quick Actions</span>
-            <span class="hi">त्वरित कार्य</span>
+          <h2 id="quick-actions-title" class="section-title" data-i18n="actions.title">
+            Quick Actions
           </h2>
+          <!-- Carousel Container could be here, but using grid for now with better styling -->
           <div class="action-grid">
             <button
               class="action-card"
@@ -139,9 +139,8 @@
               aria-describedby="action-schemes-desc"
             >
               <span class="action-icon">📋</span>
-              <span class="action-label">
-                <span class="en">Browse Schemes</span>
-                <span class="hi">योजनाएं देखें</span>
+              <span class="action-label" data-i18n="actions.browseSchemes">
+                Browse Schemes
               </span>
               <span id="action-schemes-desc" class="sr-only"
                 >View all available government schemes</span
@@ -153,9 +152,8 @@
               aria-describedby="action-eligibility-desc"
             >
               <span class="action-icon">✅</span>
-              <span class="action-label">
-                <span class="en">Check Eligibility</span>
-                <span class="hi">पात्रता जांचें</span>
+              <span class="action-label" data-i18n="actions.checkEligibility">
+                Check Eligibility
               </span>
               <span id="action-eligibility-desc" class="sr-only"
                 >Check which schemes you qualify for</span
@@ -167,9 +165,8 @@
               aria-describedby="action-categories-desc"
             >
               <span class="action-icon">📁</span>
-              <span class="action-label">
-                <span class="en">Categories</span>
-                <span class="hi">श्रेणियाँ</span>
+              <span class="action-label" data-i18n="actions.categories">
+                Categories
               </span>
               <span id="action-categories-desc" class="sr-only"
                 >Browse schemes by category</span
@@ -181,9 +178,8 @@
               aria-describedby="action-help-desc"
             >
               <span class="action-icon">❓</span>
-              <span class="action-label">
-                <span class="en">Help</span>
-                <span class="hi">मदद</span>
+              <span class="action-label" data-i18n="actions.help">
+                Help
               </span>
               <span id="action-help-desc" class="sr-only"
                 >Get help using this application</span
@@ -200,9 +196,8 @@
         aria-labelledby="categories-title"
       >
         <div class="container">
-          <h2 id="categories-title" class="section-title">
-            <span class="en">Scheme Categories</span>
-            <span class="hi">योजना श्रेणियाँ</span>
+          <h2 id="categories-title" class="section-title" data-i18n="categories.title">
+            Scheme Categories
           </h2>
           <div id="categories-grid" class="categories-grid">
             <!-- Categories loaded dynamically -->
@@ -218,9 +213,8 @@
       >
         <div class="container">
           <div class="section-header">
-            <h2 id="schemes-title" class="section-title">
-              <span class="en">Government Schemes</span>
-              <span class="hi">सरकारी योजनाएं</span>
+            <h2 id="schemes-title" class="section-title" data-i18n="schemes.title">
+              Government Schemes
             </h2>
             <div class="search-box">
               <input
@@ -229,6 +223,7 @@
                 class="search-input"
                 placeholder="Search schemes..."
                 aria-label="Search schemes"
+                data-i18n="schemes.searchPlaceholder"
               />
             </div>
           </div>
@@ -250,9 +245,8 @@
         <div class="modal-backdrop"></div>
         <div class="modal-content">
           <div class="modal-header">
-            <h2 id="eligibility-modal-title">
-              <span class="en">Check Your Eligibility</span>
-              <span class="hi">अपनी पात्रता जांचें</span>
+            <h2 id="eligibility-modal-title" data-i18n="eligibility.title">
+              Check Your Eligibility
             </h2>
             <button class="modal-close" aria-label="Close modal">
               &times;
@@ -260,10 +254,7 @@
           </div>
           <form id="eligibility-form" class="eligibility-form">
             <div class="form-group">
-              <label for="user-age">
-                <span class="en">Age</span>
-                <span class="hi">उम्र</span>
-              </label>
+              <label for="user-age" data-i18n="eligibility.age">Age</label>
               <input
                 type="number"
                 id="user-age"
@@ -274,10 +265,7 @@
               />
             </div>
             <div class="form-group">
-              <label for="user-income">
-                <span class="en">Annual Income (₹)</span>
-                <span class="hi">वार्षिक आय (₹)</span>
-              </label>
+              <label for="user-income" data-i18n="eligibility.income">Annual Income (₹)</label>
               <input
                 type="number"
                 id="user-income"
@@ -287,53 +275,38 @@
               />
             </div>
             <div class="form-group">
-              <label for="user-occupation">
-                <span class="en">Occupation</span>
-                <span class="hi">पेशा</span>
-              </label>
+              <label for="user-occupation" data-i18n="eligibility.occupation">Occupation</label>
               <select id="user-occupation" name="occupation">
-                <option value="">Select...</option>
-                <option value="farmer">Farmer / किसान</option>
-                <option value="self-employed">
-                  Self Employed / स्व-रोजगार
-                </option>
-                <option value="employed">Employed / नौकरी</option>
-                <option value="student">Student / छात्र</option>
-                <option value="unemployed">Unemployed / बेरोजगार</option>
-                <option value="homemaker">Homemaker / गृहिणी</option>
+                <option value="" data-i18n="common.select">Select...</option>
+                <option value="farmer">Farmer</option>
+                <option value="self-employed">Self Employed</option>
+                <option value="employed">Employed</option>
+                <option value="student">Student</option>
+                <option value="unemployed">Unemployed</option>
+                <option value="homemaker">Homemaker</option>
               </select>
             </div>
             <div class="form-group">
-              <label for="user-gender">
-                <span class="en">Gender</span>
-                <span class="hi">लिंग</span>
-              </label>
+              <label for="user-gender" data-i18n="eligibility.gender">Gender</label>
               <select id="user-gender" name="gender">
                 <option value="">Select...</option>
-                <option value="male">Male / पुरुष</option>
-                <option value="female">Female / महिला</option>
-                <option value="other">Other / अन्य</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
               </select>
             </div>
             <div class="form-row">
               <div class="form-group checkbox-group">
                 <input type="checkbox" id="user-bpl" name="bpl" />
-                <label for="user-bpl">
-                  <span class="en">BPL Card Holder</span>
-                  <span class="hi">BPL कार्ड धारक</span>
-                </label>
+                <label for="user-bpl" data-i18n="eligibility.bpl">BPL Card Holder</label>
               </div>
               <div class="form-group checkbox-group">
                 <input type="checkbox" id="user-land" name="hasLand" />
-                <label for="user-land">
-                  <span class="en">Own Agricultural Land</span>
-                  <span class="hi">कृषि भूमि है</span>
-                </label>
+                <label for="user-land" data-i18n="eligibility.land">Own Agricultural Land</label>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-large">
-              <span class="en">Check Eligibility</span>
-              <span class="hi">पात्रता जांचें</span>
+            <button type="submit" class="btn btn-primary btn-large" data-i18n="eligibility.submit">
+              Check Eligibility
             </button>
           </form>
           <div id="eligibility-results" class="eligibility-results" hidden>
@@ -374,17 +347,14 @@
             <span class="logo-icon">⛰️</span>
             <span>HIMAYA</span>
           </div>
-          <p class="footer-text">
-            <span class="en"
-              >Human-centred Inclusive Mobile Assistance for Yojana Access</span
-            >
-            <span class="hi"
-              >योजना तक पहुँच के लिए मानव-केंद्रित समावेशी मोबाइल सहायता</span
-            >
+          <p class="footer-text" data-i18n="app.tagline">
+            Apka Uttarakhandi Sahayak
           </p>
           <p class="footer-credits">
-            <span class="en">Making government schemes accessible to all</span>
-            <span class="hi">सभी के लिए सरकारी योजनाओं को सुलभ बनाना</span>
+            Making government schemes accessible to all
+          </p>
+          <p class="last-synced" id="last-synced">
+            <!-- Timestamp via JS -->
           </p>
         </div>
       </div>
@@ -393,14 +363,14 @@
     <!-- Offline Indicator -->
     <div id="offline-indicator" class="offline-indicator" hidden>
       <span class="offline-icon">📡</span>
-      <span class="en">You're offline. Some features may be limited.</span>
-      <span class="hi">आप ऑफलाइन हैं। कुछ सुविधाएं सीमित हो सकती हैं।</span>
+      <span data-i18n="errors.offline">You're offline. Some features may be limited.</span>
     </div>
 
     <!-- Toast Notifications -->
     <div id="toast-container" class="toast-container" aria-live="polite"></div>
 
     <!-- Scripts -->
+    <script src="/js/i18n.js"></script>
     <script src="/js/api.js"></script>
     <script src="/js/voice.js"></script>
     <script src="/js/offline.js"></script>
