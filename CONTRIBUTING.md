@@ -59,6 +59,3 @@ Thank you for your interest in contributing to HIMAYA! We welcome contributions 
 3. Push to the branch (`git push origin feature/amazing-feature`).
 4. Open a Pull Request.
 
-## License
-
-This project is licensed under the MIT License.
