@@ -1,265 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="description" content="HIMAYA helps you find government schemes in Munsyari, Uttarakhand using voice commands in Hindi or English." />
-  <meta name="keywords" content="HIMAYA, Uttarakhand schemes, Munsyari, government schemes, voice assistant, Hindi voice search" />
-  <meta name="author" content="HIMAYA Team" />
-  <meta name="theme-color" content="#1a2e22" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <meta
+      name="description"
+      content="HIMAYA (Human-centred Inclusive Mobile Assistance for Yojana Access) helps you find government schemes in Munsyari, Uttarakhand using voice commands in Hindi or English."
+    />
+    <meta
+      name="keywords"
+      content="HIMAYA, Uttarakhand schemes, Munsyari, government schemes, voice assistant, Hindi voice search, offline app"
+    />
+    <meta name="author" content="HIMAYA Team" />
+    <meta name="theme-color" content="#1a365d" />
+    <link rel="icon" type="image/svg" href="code.svg">
 
-  <!-- PWA -->
-  <link rel="manifest" href="/manifest.json" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="HIMAYA" />
-  <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="HIMAYA" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
 
-  <title data-i18n="app.title">HIMAYA — Uttarakhand Scheme Assistant</title>
+    <title data-i18n="app.title">HIMAYA - Uttarakhand Government Scheme Assistant</title>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="/css/styles.css" />
-</head>
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
 
-<body>
-  <!-- Skip link -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- ── HEADER ── -->
-  <header class="header" role="banner">
-    <div class="container header-content">
-      <div class="logo">
-        <span class="logo-icon">⛰️</span>
-        <div class="logo-text">
-          <h1>HIMAYA</h1>
-          <p class="tagline" data-i18n="app.tagline">Apka Uttarakhandi Sahayak</p>
-        </div>
-      </div>
-      <nav class="nav" role="navigation" aria-label="Main navigation">
-        <button id="theme-toggle" class="btn btn-icon" aria-label="Toggle dark mode" title="Toggle theme">
-          <span class="icon-sun">☀️</span>
-          <span class="icon-moon" hidden>🌙</span>
-        </button>
-        <button id="language-toggle" class="btn btn-outline" aria-label="Switch language">
-          <span id="current-lang">EN</span>&ensp;|&ensp;<span id="other-lang">हिंदी</span>
-        </button>
-      </nav>
-    </div>
-  </header>
-
-  <!-- ── MAIN ── -->
-  <main id="main-content" class="main" role="main">
-
-    <!-- HERO -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="container">
-        <div class="hero-content">
-          <h2 id="hero-title" class="hero-title" data-i18n="hero.title">
-            Find Government Schemes<br><em>Using Your Voice</em>
-          </h2>
-          <div class="voice-instruction">
-            <p class="hero-subtitle" data-i18n="hero.subtitle">
-              Say "What schemes are available?" or tap the microphone below.
-              Available in Hindi &amp; English.
-            </p>
-          </div>
-
-          <!-- Voice button -->
-          <div class="voice-container">
-            <button id="voice-button" class="voice-button" aria-label="Start voice input">
-              <span class="voice-icon">🎤</span>
-              <span class="voice-pulse"></span>
-            </button>
-            <div id="voice-status" class="voice-status" aria-live="polite" data-i18n="hero.tapToSpeak">
-              Tap to speak
-            </div>
-          </div>
-
-          <!-- Voice response -->
-          <div id="voice-response" class="voice-response" aria-live="polite" hidden>
-            <div class="response-text"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Decorative bg -->
-      <div class="hero-bg" aria-hidden="true">
-        <div class="wave wave-1"></div>
-        <div class="wave wave-2"></div>
-      </div>
-    </section>
-
-    <!-- QUICK ACTIONS -->
-    <section class="quick-actions" aria-labelledby="quick-actions-title">
-      <div class="container">
-        <h2 id="quick-actions-title" class="section-title" data-i18n="actions.title">Quick Actions</h2>
-        <div class="action-grid">
-          <button class="action-card" data-action="list-schemes" aria-describedby="desc-schemes">
-            <span class="action-icon">📋</span>
-            <span class="action-label" data-i18n="actions.browseSchemes">Browse Schemes</span>
-            <span id="desc-schemes" class="sr-only">View all available government schemes</span>
-          </button>
-          <button class="action-card" data-action="check-eligibility" aria-describedby="desc-eligibility">
-            <span class="action-icon">✅</span>
-            <span class="action-label" data-i18n="actions.checkEligibility">Check Eligibility</span>
-            <span id="desc-eligibility" class="sr-only">Check which schemes you qualify for</span>
-          </button>
-          <button class="action-card" data-action="categories" aria-describedby="desc-categories">
-            <span class="action-icon">📁</span>
-            <span class="action-label" data-i18n="actions.categories">Categories</span>
-            <span id="desc-categories" class="sr-only">Browse schemes by category</span>
-          </button>
-          <button class="action-card" data-action="help" aria-describedby="desc-help">
-            <span class="action-icon">❓</span>
-            <span class="action-label" data-i18n="actions.help">Help</span>
-            <span id="desc-help" class="sr-only">Get help using this application</span>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- CATEGORIES -->
-    <section id="categories-section" class="categories-section" aria-labelledby="categories-title">
-      <div class="container">
-        <h2 id="categories-title" class="section-title" data-i18n="categories.title">Scheme Categories</h2>
-        <div id="categories-grid" class="categories-grid">
-          <!-- Loaded dynamically -->
-        </div>
-      </div>
-    </section>
-
-    <!-- SCHEMES -->
-    <section id="schemes-section" class="schemes-section" aria-labelledby="schemes-title">
-      <div class="container">
-        <div class="section-header">
-          <h2 id="schemes-title" class="section-title" data-i18n="schemes.title">Government Schemes</h2>
-          <div class="search-box">
-            <input
-              type="search"
-              id="scheme-search"
-              class="search-input"
-              placeholder="Search schemes…"
-              aria-label="Search schemes"
-              data-i18n-placeholder="schemes.searchPlaceholder"
-            />
-          </div>
-        </div>
-        <div id="schemes-grid" class="schemes-grid">
-          <!-- Loaded dynamically -->
-        </div>
-      </div>
-    </section>
-
-    <!-- ELIGIBILITY MODAL -->
-    <div id="eligibility-modal" class="modal" role="dialog"
-         aria-labelledby="eligibility-modal-title" aria-modal="true" hidden>
-      <div class="modal-backdrop"></div>
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2 id="eligibility-modal-title" data-i18n="eligibility.title">Check Your Eligibility</h2>
-          <button class="modal-close" aria-label="Close modal">✕</button>
-        </div>
-        <form id="eligibility-form" class="eligibility-form" novalidate>
-          <div class="form-group">
-            <label for="user-age" data-i18n="eligibility.age">Age</label>
-            <input type="number" id="user-age" name="age" min="0" max="120"
-                   placeholder="Your age" required />
-          </div>
-          <div class="form-group">
-            <label for="user-income" data-i18n="eligibility.income">Annual Income (₹)</label>
-            <input type="number" id="user-income" name="income" min="0" step="1000"
-                   placeholder="e.g. 150000" />
-          </div>
-          <div class="form-group">
-            <label for="user-occupation" data-i18n="eligibility.occupation">Occupation</label>
-            <select id="user-occupation" name="occupation">
-              <option value="" data-i18n="common.select">Select…</option>
-              <option value="farmer">Farmer</option>
-              <option value="self-employed">Self Employed</option>
-              <option value="employed">Employed</option>
-              <option value="student">Student</option>
-              <option value="unemployed">Unemployed</option>
-              <option value="homemaker">Homemaker</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="user-gender" data-i18n="eligibility.gender">Gender</label>
-            <select id="user-gender" name="gender">
-              <option value="">Select…</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-          <div class="form-row">
-            <div class="form-group checkbox-group">
-              <input type="checkbox" id="user-bpl" name="bpl" />
-              <label for="user-bpl" data-i18n="eligibility.bpl">BPL Card Holder</label>
-            </div>
-            <div class="form-group checkbox-group">
-              <input type="checkbox" id="user-land" name="hasLand" />
-              <label for="user-land" data-i18n="eligibility.land">Own Agricultural Land</label>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary btn-large" data-i18n="eligibility.submit">
-            Check Eligibility
-          </button>
-        </form>
-        <div id="eligibility-results" class="eligibility-results" hidden></div>
-      </div>
-    </div>
-
-    <!-- SCHEME DETAIL MODAL -->
-    <div id="scheme-modal" class="modal" role="dialog"
-         aria-labelledby="scheme-modal-title" aria-modal="true" hidden>
-      <div class="modal-backdrop"></div>
-      <div class="modal-content modal-large">
-        <div class="modal-header">
-          <h2 id="scheme-modal-title">Scheme Details</h2>
-          <button class="modal-close" aria-label="Close modal">✕</button>
-        </div>
-        <div id="scheme-detail-content" class="scheme-detail">
-          <!-- Loaded dynamically -->
-        </div>
-      </div>
-    </div>
-
-  </main>
-
-  <!-- ── FOOTER ── -->
-  <footer class="footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-brand">
+    <!-- Header -->
+    <header class="header" role="banner">
+      <div class="container header-content">
+        <div class="logo">
           <span class="logo-icon">⛰️</span>
-          <span>HIMAYA</span>
+          <div class="logo-text">
+            <h1>HIMAYA</h1>
+            <p class="tagline" data-i18n="app.tagline">Apka Uttarakhandi Sahayak</p>
+          </div>
         </div>
-        <p class="footer-text" data-i18n="app.tagline">Apka Uttarakhandi Sahayak</p>
-        <p class="footer-credits">Making government schemes accessible to all</p>
-        <p class="last-synced" id="last-synced"></p>
+        <nav class="nav" role="navigation" aria-label="Main navigation">
+          
+          <!-- Mode Toggle -->
+          <button id="theme-toggle" class="btn btn-icon" aria-label="Toggle Dark Mode">
+            <span class="icon-sun">☀️</span>
+            <span class="icon-moon" hidden>🌙</span>
+          </button>
+
+          <!-- Language Toggle -->
+          <button
+            id="language-toggle"
+            class="btn btn-outline"
+            aria-label="Switch language"
+          >
+            <span id="current-lang">EN</span> |
+            <span id="other-lang">हिंदी</span>
+          </button>
+        </nav>
       </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main" role="main">
+      <!-- Hero Section with Voice Interface -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container">
+          <div class="hero-content">
+            <h2 id="hero-title" class="hero-title" data-i18n="hero.title">
+              Find Government Schemes Using Your Voice
+            </h2>
+            <div class="voice-instruction">
+              <p class="hero-subtitle" data-i18n="hero.subtitle">
+                Say "What schemes are available?" or tap the microphone
+              </p>
+            </div>
+
+            <!-- Voice Button -->
+            <div class="voice-container">
+              <button
+                id="voice-button"
+                class="voice-button"
+                aria-label="Start voice input"
+              >
+                <span class="voice-icon">🎤</span>
+                <span class="voice-pulse"></span>
+              </button>
+              <div id="voice-status" class="voice-status" aria-live="polite" data-i18n="hero.tapToSpeak">
+                Tap to speak
+              </div>
+            </div>
+
+            <!-- Voice Response Area -->
+            <div
+              id="voice-response"
+              class="voice-response"
+              aria-live="polite"
+              hidden
+            >
+              <div class="response-text"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Animated Background -->
+        <div class="hero-bg">
+          <div class="wave wave-1"></div>
+          <div class="wave wave-2"></div>
+        </div>
+      </section>
+
+      <!-- Quick Actions -->
+      <section class="quick-actions" aria-labelledby="quick-actions-title">
+        <div class="container">
+          <h2 id="quick-actions-title" class="section-title" data-i18n="actions.title">
+            Quick Actions
+          </h2>
+          <!-- Carousel Container could be here, but using grid for now with better styling -->
+          <div class="action-grid">
+            <button
+              class="action-card"
+              data-action="list-schemes"
+              aria-describedby="action-schemes-desc"
+            >
+              <span class="action-icon">📋</span>
+              <span class="action-label" data-i18n="actions.browseSchemes">
+                Browse Schemes
+              </span>
+              <span id="action-schemes-desc" class="sr-only"
+                >View all available government schemes</span
+              >
+            </button>
+            <button
+              class="action-card"
+              data-action="check-eligibility"
+              aria-describedby="action-eligibility-desc"
+            >
+              <span class="action-icon">✅</span>
+              <span class="action-label" data-i18n="actions.checkEligibility">
+                Check Eligibility
+              </span>
+              <span id="action-eligibility-desc" class="sr-only"
+                >Check which schemes you qualify for</span
+              >
+            </button>
+            <button
+              class="action-card"
+              data-action="categories"
+              aria-describedby="action-categories-desc"
+            >
+              <span class="action-icon">📁</span>
+              <span class="action-label" data-i18n="actions.categories">
+                Categories
+              </span>
+              <span id="action-categories-desc" class="sr-only"
+                >Browse schemes by category</span
+              >
+            </button>
+            <button
+              class="action-card"
+              data-action="help"
+              aria-describedby="action-help-desc"
+            >
+              <span class="action-icon">❓</span>
+              <span class="action-label" data-i18n="actions.help">
+                Help
+              </span>
+              <span id="action-help-desc" class="sr-only"
+                >Get help using this application</span
+              >
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Categories Section -->
+      <section
+        id="categories-section"
+        class="categories-section"
+        aria-labelledby="categories-title"
+      >
+        <div class="container">
+          <h2 id="categories-title" class="section-title" data-i18n="categories.title">
+            Scheme Categories
+          </h2>
+          <div id="categories-grid" class="categories-grid">
+            <!-- Categories loaded dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Schemes Section -->
+      <section
+        id="schemes-section"
+        class="schemes-section"
+        aria-labelledby="schemes-title"
+      >
+        <div class="container">
+          <div class="section-header">
+            <h2 id="schemes-title" class="section-title" data-i18n="schemes.title">
+              Government Schemes
+            </h2>
+            <div class="search-box">
+              <input
+                type="search"
+                id="scheme-search"
+                class="search-input"
+                placeholder="Search schemes..."
+                aria-label="Search schemes"
+                data-i18n="schemes.searchPlaceholder"
+              />
+            </div>
+          </div>
+          <div id="schemes-grid" class="schemes-grid">
+            <!-- Schemes loaded dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Eligibility Modal -->
+      <div
+        id="eligibility-modal"
+        class="modal"
+        role="dialog"
+        aria-labelledby="eligibility-modal-title"
+        aria-modal="true"
+        hidden
+      >
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 id="eligibility-modal-title" data-i18n="eligibility.title">
+              Check Your Eligibility
+            </h2>
+            <button class="modal-close" aria-label="Close modal">
+              &times;
+            </button>
+          </div>
+          <form id="eligibility-form" class="eligibility-form">
+            <div class="form-group">
+              <label for="user-age" data-i18n="eligibility.age">Age</label>
+              <input
+                type="number"
+                id="user-age"
+                name="age"
+                min="0"
+                max="120"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="user-income" data-i18n="eligibility.income">Annual Income (₹)</label>
+              <input
+                type="number"
+                id="user-income"
+                name="income"
+                min="0"
+                step="1000"
+              />
+            </div>
+            <div class="form-group">
+              <label for="user-occupation" data-i18n="eligibility.occupation">Occupation</label>
+              <select id="user-occupation" name="occupation">
+                <option value="" data-i18n="common.select">Select...</option>
+                <option value="farmer">Farmer</option>
+                <option value="self-employed">Self Employed</option>
+                <option value="employed">Employed</option>
+                <option value="student">Student</option>
+                <option value="unemployed">Unemployed</option>
+                <option value="homemaker">Homemaker</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="user-gender" data-i18n="eligibility.gender">Gender</label>
+              <select id="user-gender" name="gender">
+                <option value="">Select...</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group checkbox-group">
+                <input type="checkbox" id="user-bpl" name="bpl" />
+                <label for="user-bpl" data-i18n="eligibility.bpl">BPL Card Holder</label>
+              </div>
+              <div class="form-group checkbox-group">
+                <input type="checkbox" id="user-land" name="hasLand" />
+                <label for="user-land" data-i18n="eligibility.land">Own Agricultural Land</label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-large" data-i18n="eligibility.submit">
+              Check Eligibility
+            </button>
+          </form>
+          <div id="eligibility-results" class="eligibility-results" hidden>
+            <!-- Results shown here -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Scheme Detail Modal -->
+      <div
+        id="scheme-modal"
+        class="modal"
+        role="dialog"
+        aria-labelledby="scheme-modal-title"
+        aria-modal="true"
+        hidden
+      >
+        <div class="modal-backdrop"></div>
+        <div class="modal-content modal-large">
+          <div class="modal-header">
+            <h2 id="scheme-modal-title">Scheme Details</h2>
+            <button class="modal-close" aria-label="Close modal">
+              &times;
+            </button>
+          </div>
+          <div id="scheme-detail-content" class="scheme-detail">
+            <!-- Scheme details loaded dynamically -->
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <span class="logo-icon">⛰️</span>
+            <span>HIMAYA</span>
+          </div>
+          <p class="footer-text" data-i18n="app.tagline">
+            Apka Uttarakhandi Sahayak
+          </p>
+          <p class="footer-credits">
+            Making government schemes accessible to all
+          </p>
+          <p class="last-synced" id="last-synced">
+            <!-- Timestamp via JS -->
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Offline Indicator -->
+    <div id="offline-indicator" class="offline-indicator" hidden>
+      <span class="offline-icon">📡</span>
+      <span data-i18n="errors.offline">You're offline. Some features may be limited.</span>
     </div>
-  </footer>
 
-  <!-- Offline indicator -->
-  <div id="offline-indicator" class="offline-indicator" hidden>
-    <span class="offline-icon">📡</span>
-    <span data-i18n="errors.offline">You're offline. Some features may be limited.</span>
-  </div>
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
 
-  <!-- Toast -->
-  <div id="toast-container" class="toast-container" aria-live="polite"></div>
-
-  <!-- Scripts -->
-  <script src="/js/i18n.js"></script>
-  <script src="/js/api.js"></script>
-  <script src="/js/voice.js"></script>
-  <script src="/js/offline.js"></script>
-  <script src="/js/app.js"></script>
-</body>
+    <!-- Scripts -->
+    <script src="/js/i18n.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/voice.js"></script>
+    <script src="/js/offline.js"></script>
+    <script src="/js/app.js"></script>
+  </body>
 </html>
